@@ -1,0 +1,8 @@
+{
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.27",
+        "ark4ne/xl-reader": "^1.0",
+      "ext-zip": "*",
+      "ext-pdo": "*"
+    }
+}
