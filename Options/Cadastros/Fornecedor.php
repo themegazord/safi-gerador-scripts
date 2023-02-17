@@ -3,14 +3,13 @@ namespace Options\Cadastros;
 
 require_once 'vendor/autoload.php';
 require_once '_Utils/_Utils.php';
-require_once 'DTO/Cadastros.php';
+require_once 'DTO/CadastrosDTO.php';
 require_once 'Options/Cadastros/MenuCadastros.php';
 
 use Ark4ne\XlReader\Exception\ReaderException;
 use Ark4ne\XlReader\Exception\UnsupportedFileFormat;
 use Ark4ne\XlReader\Factory;
-use DTO\Cadastros;
-use Options\Cadastros\MenuCadastros;
+use DTO\CadastrosDTO;
 
 use _Utils\Utils;
 class Fornecedor
@@ -34,7 +33,7 @@ class Fornecedor
         $reader = Factory::createReader($file);
         $reader->load();
         foreach ($reader->read(1) as $row) {
-            $cadastro = new Cadastros(
+            $cadastro = new CadastrosDTO(
                 razaosocial: Utils::removingSingleQuotesFromString($row['A']),
                 namefantasia: Utils::removingSingleQuotesFromString($row['B']),
                 cnpj: Utils::removingCharactersFromNumbers($row['C']),
@@ -58,7 +57,7 @@ class Fornecedor
      * @throws UnsupportedFileFormat
      * @throws ReaderException
      */
-    private static function insereNoBlocoDeNotas(Cadastros $cadastros): void
+    private static function insereNoBlocoDeNotas(CadastrosDTO $cadastros): void
     {
         $arquivo = fopen("script-cadastros.sql", "a+");
 

@@ -2,7 +2,7 @@
 
 namespace DTO;
 
-readonly class Cadastros
+readonly class CadastrosDTO
 {
     public function __construct(
         public string $razaosocial,
